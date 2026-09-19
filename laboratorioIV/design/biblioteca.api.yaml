@@ -1,0 +1,105 @@
+openapi: 3.0.3
+info:
+  title: API de Biblioteca
+  version: "1.0.0"
+
+paths:
+  /libros:
+    post:
+      summary: Registrar un nuevo libro
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                titulo:
+                  type: string
+                autor:
+                  type: string
+                isbn:
+                  type: string
+                anioPublicacion:
+                  type: integer
+                estado:
+                  type: string
+      responses:
+        '201':
+          description: Libro creado exitosamente
+        '400':
+          description: Datos invalidos
+        '409':
+          description: Ya existe un libro con ese ISBN
+
+    get:
+      summary: Consultar todos los libros
+      responses:
+        '200':
+          description: Lista de libros obtenida correctamente
+
+  /libros/titulo/{titulo}:
+    get:
+      summary: Consultar libro por titulo
+      parameters:
+        - name: titulo
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Libro encontrado
+        '404':
+          description: No se encontro ningun libro con ese titulo
+
+  /libros/{id}:
+    put:
+      summary: Actualizar un libro existente
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                titulo:
+                  type: string
+                autor:
+                  type: string
+                isbn:
+                  type: string
+                anioPublicacion:
+                  type: integer
+                estado:
+                  type: string
+      responses:
+        '200':
+          description: Libro actualizado correctamente
+        '400':
+          description: Datos invalidos
+        '404':
+          description: Libro no encontrado
+
+    delete:
+      summary: Eliminar un libro
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Libro eliminado correctamente
+        '404':
+          description: Libro no encontrado
+
+
+          

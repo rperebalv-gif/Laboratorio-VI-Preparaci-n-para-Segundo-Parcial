@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-LaboratorioIvApplication<laboratorioIV>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.practice.laboratorioIV.LaboratorioIvApplication",
+            "projectName": "laboratorioIV",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
